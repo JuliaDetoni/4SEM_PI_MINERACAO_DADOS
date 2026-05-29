@@ -1,8 +1,7 @@
 # 📊 Análise de E-commerce da OLIST no Brasil (2016–2018)
 
-> **Projeto Integrador — 4º Semestre**  
-> **Disciplina:** Mineração de Dados  
-> **Curso:** Tecnologia em Análise e Desenvolvimento de Sistemas  
+> **Projeto Integrador — 4º Semestre**   
+> **Curso:** Tecnologia em Banco de dados 
 > **Instituição:** SENAC EAD
 
 ---
