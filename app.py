@@ -9,6 +9,35 @@ st.title("📊 Análise de E-commerce — OLIST (2016–2018)")
 st.caption("Projeto Integrador — 4º Semestre | Mineração de Dados com Python, Pandas, Scikit-Learn & Streamlit")
 
 # ==============================================================================
+# FUNÇÃO AUXILIAR (definida ANTES da cadeia if/elif)
+# ==============================================================================
+def render_pergunta(titulo, descricao, func, df):
+    st.header(titulo)
+    st.markdown(descricao)
+    
+    with st.spinner("Executando análise..."):
+        fig, metricas, detalhe = func(df)
+    
+    cols = st.columns(len(metricas))
+    for col, (k, v) in zip(cols, metricas.items()):
+        label = k.replace('_', ' ').title()
+        if isinstance(v, float):
+            col.metric(label, f"{v:.2f}")
+        else:
+            col.metric(label, f"{v:,}" if isinstance(v, (int, np.integer)) else str(v))
+    
+    st.pyplot(fig)
+    
+    with st.expander("📄 Relatório de Dados Completo"):
+        st.dataframe(detalhe, use_container_width=True, hide_index=True)
+        st.download_button(
+            label="⬇️ Baixar CSV",
+            data=detalhe.to_csv(index=False).encode('utf-8'),
+            file_name=f"{titulo.split('—')[0].strip().replace(' ', '_')}.csv",
+            mime='text/csv'
+        )
+
+# ==============================================================================
 # CARGA DE DADOS
 # ==============================================================================
 with st.spinner("Executando ETL e merges..."):
@@ -67,7 +96,6 @@ elif menu == "🔧 Auditoria ETL":
     """)
     
     log = []
-    # Simula o log do ETL baseado no estado atual dos dataframes
     prd = dfs['products']
     if 'product_photos_qty' in prd.columns:
         log.append(("prd", "product_photos_qty", "fillna", 0, "Fotos não cadastradas = 0"))
@@ -87,39 +115,8 @@ elif menu == "🔧 Auditoria ETL":
     st.bar_chart(pd.Series(sizes))
 
 # ==============================================================================
-# FUNÇÃO AUXILIAR PARA RENDERIZAR PERGUNTA
-# ==============================================================================
-def render_pergunta(titulo, descricao, func, df):
-    st.header(titulo)
-    st.markdown(descricao)
-    
-    with st.spinner("Executando análise..."):
-        fig, metricas, detalhe = func(df)
-    
-    # Métricas
-    cols = st.columns(len(metricas))
-    for col, (k, v) in zip(cols, metricas.items()):
-        label = k.replace('_', ' ').title()
-        if isinstance(v, float):
-            col.metric(label, f"{v:.2f}")
-        else:
-            col.metric(label, f"{v:,}" if isinstance(v, (int, np.integer)) else str(v))
-    
-    st.pyplot(fig)
-    
-    with st.expander("📄 Relatório de Dados Completo"):
-        st.dataframe(detalhe, use_container_width=True, hide_index=True)
-        st.download_button(
-            label="⬇️ Baixar CSV",
-            data=detalhe.to_csv(index=False).encode('utf-8'),
-            file_name=f"{titulo.split('—')[0].strip().replace(' ', '_')}.csv",
-            mime='text/csv'
-        )
-
-# ==============================================================================
 # PERGUNTAS
 # ==============================================================================
-
 elif menu == "Q1 — Receita por Categoria":
     render_pergunta(
         "Q1 — Quais categorias geram mais receita?",
