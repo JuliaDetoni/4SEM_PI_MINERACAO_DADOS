@@ -1,6 +1,6 @@
 # OLIST BI — Mineração de Dados & Análise Prescritiva
 ---
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](COLOQUE_AQUI_O_LINK_DO_SEU_APP)
+[Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](COLOQUE_AQUI_O_LINK_DO_SEU_APP)
 [![Python](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
