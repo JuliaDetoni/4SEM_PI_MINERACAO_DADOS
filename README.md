@@ -48,6 +48,17 @@ O dataset é composto por **9 tabelas relacionais**:
 | `product_category_name_translation.csv` | Tradução EN → PT das categorias |
 
 ---
+```
+olist-bi-streamlit/
+├── app.py                 # Interface Streamlit (só chama funções)
+├── config.py              # URLs dos datasets no GitHub raw
+├── data_loader.py         # Carrega CSVs com @st.cache_data
+├── etl.py                 # Transformações, merges, features
+├── queries.py             # Uma função por pergunta (Q1-Q9)
+├── utils.py               # Helpers de formatação, cores, etc.
+└── requirements.txt       # pandas, numpy, matplotlib, seaborn, streamlit
+```
+
 
 ## 🛠️ Tecnologias Utilizadas
 
