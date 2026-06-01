@@ -166,15 +166,23 @@ def q4_migracao_categoria(df: pd.DataFrame):
     trans_top = transicoes.groupby(['primeira_categoria', 'ultima_categoria']).size().reset_index(name='contagem').sort_values('contagem', ascending=False).head(10)
     trans_top['transicao'] = trans_top['primeira_categoria'] + ' → ' + trans_top['ultima_categoria']
     
-    fig, axes = plt.subplots(1, 2, figsize=(16, 7))
+    # >>> AQUI: 2 linhas, 1 coluna — um abaixo do outro <<<
+    fig, axes = plt.subplots(2, 1, figsize=(10, 14))
+    
     colors = sns.color_palette("Set2", 2)
     axes[0].pie([ficaram, migraram], labels=['Fiéis', 'Migraram'], autopct='%1.1f%%', colors=colors, startangle=90)
-    axes[0].set_title('Fidelidade vs Migração de Categoria')
+    axes[0].set_title('Fidelidade vs Migração de Categoria', fontsize=12, pad=20)
     
     if not trans_top.empty:
         sns.barplot(x='contagem', y='transicao', data=trans_top, palette='coolwarm', ax=axes[1])
-        axes[1].set_title('Top 10 Transições de Categoria')
+        axes[1].set_title('Top 10 Transições de Categoria', fontsize=12, pad=20)
         axes[1].set_xlabel('Clientes')
+        axes[1].set_ylabel('')
+    else:
+        axes[1].text(0.5, 0.5, 'Sem transições suficientes', ha='center', va='center', transform=axes[1].transAxes)
+        axes[1].set_title('Top 10 Transições de Categoria')
+    
+    plt.tight_layout()
     
     metricas = {
         'clientes_recorrentes': len(migracao),
