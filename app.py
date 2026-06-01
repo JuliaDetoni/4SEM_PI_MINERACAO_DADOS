@@ -1,5 +1,4 @@
 # app.py
-# app.py
 import streamlit as st
 import numpy as np          # <-- adicionar esta linha
 from data_loader import load_all_data
