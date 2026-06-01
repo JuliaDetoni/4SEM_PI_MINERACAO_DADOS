@@ -13,11 +13,11 @@
 
 ## Integrantes
 
-| Nome | Função |
-|------|--------|
+| Nome | 
+|------|
 | **Douglas Netizke da Silva** | 
-| **Ingrid Couto Rosin** |
-| **Juliano Detoni** | 
+| [**Ingrid Couto Rosin**](https://github.com/IngridRosin/) |
+| [**Juliano Detoni**](https://github.com/JuliaDetoni/) | 
 | **Patrick Jose Rangel Penna** |
 
 
