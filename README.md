@@ -15,7 +15,7 @@
 
 | Nome | 
 |------|
-| **Douglas Netizke da Silva** | 
+| [**Douglas Netizke da Silva**](https://github.com/douglasneitzke) | 
 | [**Ingrid Couto Rosin**](https://github.com/IngridRosin/) |
 | [**Juliano Detoni**](https://github.com/JuliaDetoni/) | 
 | [**Patrick Jose Rangel Penna**](https://github.com/pennapatrick/) |
