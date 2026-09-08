@@ -25,7 +25,7 @@
 
 ## Acesse a aplicação
 
-🔗 **[Clique aqui para abrir o dashboard interativo](COLOQUE_AQUI_O_LINK_DO_SEU_APP)**
+🔗 **[Clique aqui para abrir o dashboard interativo](https://tbn5gpjcztdbfxiqcsgspe.streamlit.app)**
 
 O BI foi construído em **Streamlit** e reflete fielmente a análise executada no Jupyter Notebook, com:
 - ETL documentado e auditável (zero perda de registros)
